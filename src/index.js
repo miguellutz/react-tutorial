@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
-class Square extends React.Component {
+function Square(props) {
   // constructor(props) {
   //   super(props);
   //   this.state = {
@@ -10,17 +10,16 @@ class Square extends React.Component {
   //   };
   // }
 
-  render() {
-    return (
-      <button
-        className="square"
-        onClick={() => this.props.onClick()}
-      >
-        {this.props.value}
-      </button>
-    );
-  }
+  return (
+    <button
+      className="square"
+      onClick={props.onClick}
+    >
+      {props.value}
+    </button>
+  );
 }
+
 
 class Board extends React.Component {
   constructor(props) {
@@ -29,7 +28,7 @@ class Board extends React.Component {
       squares: Array(9).fill(null),
     };
   }
-  
+
   handleClick(i) {
     const squares = this.state.squares.slice();
     squares[i] = 'X';
